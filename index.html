@@ -23,7 +23,6 @@ body {
   overflow: hidden;
 }
 
-/* Watermark Logo */
 .hero::before {
   content: "";
   position: absolute;
@@ -37,22 +36,15 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* Ensure content sits above watermark */
 .hero * {
   position: relative;
   z-index: 1;
 }
 
-/* Fade-in animation */
+/* Fade-in */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .fade-in {
@@ -62,7 +54,6 @@ body {
 
 .delay-1 { animation-delay: 0.3s; }
 .delay-2 { animation-delay: 0.6s; }
-.delay-3 { animation-delay: 0.9s; }
 
 /* NAV */
 nav {
@@ -152,12 +143,11 @@ footer {
   <h1 class="fade-in">Pack Forever Foundation</h1>
 
   <p class="fade-in delay-1">
-    Pack Forever Foundation exists to ensure Colorado State University Pueblo
-    student-athlete alumni have access to a strong, lifelong community of support.
+    “Pack Forever Foundation” exists to ensure Colorado State University Pueblo student athlete alumni have access to a strong, lifelong community of support. :contentReference[oaicite:2]{index=2}
   </p>
 
   <div class="fade-in delay-2">
-    <a class="btn red" href="https://buy.stripe.com/dRm28k6WJaoM2ewcIQcEw02" target="_blank">Donate</a>
+    <a class="btn red" href="https://buy.stripe.com/4gM14gdl71SgbP6dMUcEw00" target="_blank">Donate</a>
     <a class="btn red" href="https://buy.stripe.com/dRm28k6WJaoM2ewcIQcEw02" target="_blank">Become a Member</a>
   </div>
 
@@ -210,6 +200,7 @@ footer {
   <a class="btn" href="https://forms.gle/6e1N8sohu8yFcCss7" target="_blank">
     Submit Nomination
   </a>
+  :contentReference[oaicite:3]{index=3}
 </section>
 
 <!-- BOARD -->
@@ -221,6 +212,7 @@ footer {
   <div class="board-member">Drew Swartz – Secretary</div>
   <div class="board-member">Austin Micci – Treasurer</div>
   <div class="board-member">Joe Rosenbrock – Board Member</div>
+  :contentReference[oaicite:4]{index=4}
 </section>
 
 <!-- CONTACT -->
