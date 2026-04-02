@@ -60,6 +60,9 @@ nav {
   background: #002244;
   text-align: center;
   padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 nav a {
@@ -67,6 +70,7 @@ nav a {
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
+  font-size: 14px;
 }
 
 nav a:hover {
@@ -120,9 +124,187 @@ h2 {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* BOARD */
-.board-member {
-  margin: 5px 0;
+/* ── BOARD FLIP CARDS ── */
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.flip-card {
+  perspective: 1000px;
+  height: 340px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #ffffff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  text-align: left;
+}
+
+.card-avatar {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #002244;
+  font-size: 36px;
+  font-weight: bold;
+  color: #B5D4F4;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+.card-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.card-front-info {
+  padding: 12px 16px 10px;
+  text-align: left;
+}
+
+.card-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #003366;
+  margin: 0 0 2px;
+}
+
+.card-role-tag {
+  font-size: 12px;
+  color: #666;
+  margin: 0 0 8px;
+}
+
+.sport-badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 99px;
+  background: #dceefa;
+  color: #185FA5;
+  font-weight: 600;
+}
+
+.flip-hint {
+  font-size: 11px;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 9px;
+}
+
+.red-bar {
+  height: 4px;
+  background: #cc0000;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.back-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #003366;
+  margin: 0;
+}
+
+.back-role-tag {
+  font-size: 11px;
+  color: #888;
+  margin: 0;
+}
+
+.back-divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  margin: 2px 0;
+}
+
+.back-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #aaa;
+  margin: 0;
+}
+
+.back-bio {
+  font-size: 11.5px;
+  color: #555;
+  line-height: 1.55;
+  margin: 0;
+  flex: 1;
+}
+
+.now-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 99px;
+  background: #e6f4d7;
+  color: #3B6D11;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.back-now {
+  font-size: 11.5px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.back-linkedin {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: #185FA5;
+  text-decoration: none;
+  padding-top: 2px;
+  font-weight: 600;
+}
+
+.back-linkedin:hover {
+  text-decoration: underline;
 }
 
 /* FOOTER */
@@ -139,19 +321,15 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-
   <h1 class="fade-in">Pack Forever Foundation</h1>
-
   <p class="fade-in delay-1">
     Supporting CSU Pueblo student-athlete alumni through community, connection,
     and resources when it matters most.
   </p>
-
   <div class="fade-in delay-2">
     <a class="btn red" href="https://buy.stripe.com/4gM14gdl71SgbP6dMUcEw00" target="_blank">Donate</a>
     <a class="btn red" href="https://buy.stripe.com/dRm28k6WJaoM2ewcIQcEw02" target="_blank">Become a Member</a>
   </div>
-
 </div>
 
 <!-- NAV -->
@@ -177,18 +355,15 @@ footer {
 <!-- IMPACT -->
 <section id="impact">
   <h2>What We Do</h2>
-
   <div class="cards">
     <div class="card">
       <h3>Financial Support</h3>
       <p>Helping alumni during times of hardship.</p>
     </div>
-
     <div class="card">
       <h3>Community</h3>
       <p>Keeping former teammates connected for life.</p>
     </div>
-
     <div class="card">
       <h3>Resources</h3>
       <p>Providing guidance, mentorship, and opportunities.</p>
@@ -200,7 +375,6 @@ footer {
 <section id="nominate">
   <h2>Nominate an Alumni</h2>
   <p>Need support or know someone who does? Submit a nomination.</p>
-
   <a class="btn" href="https://forms.gle/6e1N8sohu8yFcCss7" target="_blank">
     Submit Nomination
   </a>
@@ -209,23 +383,20 @@ footer {
 <!-- BOARD -->
 <section id="board">
   <h2>Board Members</h2>
+  <p style="max-width:650px; margin: 0 auto 10px; color:#555; font-size:14px;">
+    Tap any card to learn about each member's athletic career and what they're up to today.
+  </p>
 
-  <div class="board-member">Kyle Rosenbrock – President</div>
-  <div class="board-member">Scotland Coyle – Vice President</div>
-  <div class="board-member">Drew Swartz – Secretary</div>
-  <div class="board-member">Austin Micci – Treasurer</div>
-  <div class="board-member">Joe Rosenbrock – Board Member</div>
+  <div class="board-grid" id="boardGrid"></div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2>Contact Us</h2>
   <p>Connect with us or reach out directly.</p>
-
   <a class="btn" href="https://www.facebook.com/share/g/1KjDQHaBdT/" target="_blank">
     Join Facebook Community
   </a>
-
   <a class="btn" href="mailto:packforeverfoundation@gmail.com">
     Email Us
   </a>
@@ -234,6 +405,115 @@ footer {
 <footer>
   <p>© 2026 Pack Forever Foundation</p>
 </footer>
+
+<script>
+const members = [
+  {
+    initials: "KR",
+    photo: null,
+    name: "Kyle Rosenbrock",
+    role: "President",
+    sport: "Football · LB",
+    years: "2016–2020",
+    bio: "2020 RMAC Male Scholar-Athlete of the Year. CoSIDA Academic All-American. First-Team All-RMAC. 264 career tackles, 3rd all-time at CSU Pueblo. 3.94 GPA in Mechatronic Engineering.",
+    now: "Senior Supervisor, High Temperature Composites at Collins Aerospace (RTX). BSE & MS in Engineering from CSU Pueblo; M.Eng. from Cornell University.",
+    linkedin: "https://www.linkedin.com/in/kylerosenbrock/"
+  },
+  {
+    initials: "SC",
+    photo: null,
+    name: "Scotland Coyle",
+    role: "Vice President",
+    sport: "Football · C/OL",
+    years: "2011–2014",
+    bio: "2014 All-American and National Champion. Anchored the offensive line on CSU Pueblo's 2014 NCAA Division II National Championship team. First-Team RMAC All-Academic.",
+    now: "Career info not publicly listed. Connect with Scotland on LinkedIn to learn more.",
+    linkedin: "#"
+  },
+  {
+    initials: "DS",
+    photo: null,
+    name: "Drew Swartz",
+    role: "Secretary",
+    sport: "Football · OG",
+    years: "2009–2013",
+    bio: "2013 All-American offensive guard. Part of an O-line that ranked 6th nationally in total offense. Contributed to back-to-back RMAC championship teams in 2012 and 2013.",
+    now: "Technology Analyst at State Farm. Holds an MBA and CPCU designation. BS in Management & MBA in Marketing from CSU Pueblo.",
+    linkedin: "https://www.linkedin.com/in/drew-swartz-42744954/"
+  },
+  {
+    initials: "AM",
+    photo: null,
+    name: "Austin Micci",
+    role: "Treasurer",
+    sport: "Football · RB",
+    years: "2016–2019",
+    bio: "2x CoSIDA Academic All-American. 2019 RMAC Academic Offensive Player of the Year. 5th all-time at CSU Pueblo with 2,706 rushing yards. Competed in the D2 Senior Bowl.",
+    now: "Insurance Producer at Western Group Inc. in Colorado Springs, specializing in commercial and personal insurance.",
+    linkedin: "https://www.linkedin.com/in/austin-micci-710873107/"
+  },
+  {
+    initials: "JR",
+    photo: null,
+    name: "Joe Rosenbrock",
+    role: "Board Member",
+    sport: "Football · LB",
+    years: "2012–2015",
+    bio: "Led the team in tackles (107) during the 2014 National Championship season. Academic All-RMAC First Team. RMAC Summit Award for highest GPA on a Championship team.",
+    now: "Career info not publicly listed. Connect with Joe on LinkedIn to learn more.",
+    linkedin: "#"
+  }
+];
+
+const linkedInIcon = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>`;
+
+const clockIcon = `<svg width="11" height="11" viewBox="0 0 16 16" fill="none"><path d="M8 3v5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/></svg>`;
+
+const grid = document.getElementById('boardGrid');
+
+members.forEach(m => {
+  const card = document.createElement('div');
+  card.className = 'flip-card';
+
+  const avatarContent = m.photo
+    ? `<img src="${m.photo}" alt="${m.name}" />`
+    : m.initials;
+
+  const linkedinLink = m.linkedin !== '#'
+    ? `<a class="back-linkedin" href="${m.linkedin}" target="_blank">${linkedInIcon} View on LinkedIn</a>`
+    : `<a class="back-linkedin" href="#" style="color:#aaa;cursor:default;">${linkedInIcon} LinkedIn not listed</a>`;
+
+  card.innerHTML = `
+    <div class="flip-inner">
+      <div class="flip-front">
+        <div class="red-bar"></div>
+        <div class="card-avatar">${avatarContent}</div>
+        <div class="card-front-info">
+          <p class="card-name">${m.name}</p>
+          <p class="card-role-tag">${m.role}</p>
+          <span class="sport-badge">${m.sport} · ${m.years}</span>
+          <div class="flip-hint">${clockIcon} Tap for bio</div>
+        </div>
+      </div>
+      <div class="flip-back">
+        <div class="red-bar" style="border-radius:4px;"></div>
+        <p class="back-name">${m.name}</p>
+        <p class="back-role-tag">${m.role} · ${m.sport}</p>
+        <hr class="back-divider" />
+        <p class="back-section-label">Athletic career</p>
+        <p class="back-bio">${m.bio}</p>
+        <hr class="back-divider" />
+        <span class="now-badge">Now</span>
+        <p class="back-now">${m.now}</p>
+        ${linkedinLink}
+      </div>
+    </div>
+  `;
+
+  card.addEventListener('click', () => card.classList.toggle('flipped'));
+  grid.appendChild(card);
+});
+</script>
 
 </body>
 </html>
