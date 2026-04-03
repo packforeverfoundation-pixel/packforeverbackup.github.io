@@ -1,38 +1,186 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Pack Forever Foundation</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Pack Forever Foundation</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  color: #003366;
+  background-color: #f8f9fb;
+}
+nav {
+  background: #002244;
+  text-align: center;
+  padding: 12px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 14px;
+}
+nav a:hover { color: #cc0000; }
+footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 25px;
+  margin-top: 0;
+}
+.btn {
+  display: inline-block;
+  padding: 14px 24px;
+  margin: 10px;
+  background: #003366;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.btn.red { background: #cc0000; }
+.btn:hover { opacity: 0.9; }
+
+.hero {
+  position: relative;
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 140px 20px;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 500px; height: 500px;
+  background: url('logo.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.08;
+  transform: translate(-50%, -50%);
+}
+.hero * { position: relative; z-index: 1; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; animation: fadeIn 1.2s ease forwards; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+  text-align: center;
+}
+h2 { margin-bottom: 20px; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.board-cta {
+  background: #002244;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+.board-cta h2 { color: white; margin-bottom: 14px; }
+.board-cta p { max-width: 600px; margin: 0 auto 28px; opacity: 0.85; line-height: 1.6; }
+.board-cta .btn { background: #cc0000; }
+</style>
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="logo">Pack Forever Foundation</div>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">Mission</a></li>
-    <li><a href="board.html">Board</a></li>
-    <li><a href="nominate.html">Nominate</a></li>
-    <li><a href="donate.html">Donate</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
+<div class="hero">
+  <h1 class="fade-in">Pack Forever Foundation</h1>
+  <p class="fade-in delay-1">
+    Supporting CSU Pueblo student-athlete alumni through community, connection,
+    and resources when it matters most.
+  </p>
+  <div class="fade-in delay-2">
+    <a class="btn red" href="https://buy.stripe.com/4gM14gdl71SgbP6dMUcEw00" target="_blank">Donate</a>
+    <a class="btn red" href="https://buy.stripe.com/dRm28k6WJaoM2ewcIQcEw02" target="_blank">Become a Member</a>
+  </div>
+</div>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="index.html#mission">Mission</a>
+  <a href="index.html#impact">Impact</a>
+  <a href="index.html#nominate">Nominate</a>
+  <a href="board.html">Board</a>
+  <a href="index.html#contact">Contact</a>
 </nav>
 
-<div class="container">
-  <h1>Welcome to Pack Forever Foundation</h1>
-  <p>
-    Pack Forever Foundation exists to ensure CSU Pueblo student athlete alumni
-    have access to a strong, lifelong community of support.
+<section id="mission">
+  <h2>Our Mission</h2>
+  <p style="max-width:700px; margin:auto;">
+    Pack Forever Foundation exists to ensure Colorado State University Pueblo
+    student-athlete alumni have access to a strong, lifelong community of support.
+    We provide resources, connections, and assistance to strengthen the Pack as
+    challenges arise.
   </p>
+</section>
 
-  <a href="https://buy.stripe.com/dRm28k6WJaoM2ewcIQcEw02" class="btn">
-    Become a Member
-  </a>
+<section id="impact">
+  <h2>What We Do</h2>
+  <div class="cards">
+    <div class="card">
+      <h3>Financial Support</h3>
+      <p>Helping alumni during times of hardship.</p>
+    </div>
+    <div class="card">
+      <h3>Community</h3>
+      <p>Keeping former teammates connected for life.</p>
+    </div>
+    <div class="card">
+      <h3>Resources</h3>
+      <p>Providing guidance, mentorship, and opportunities.</p>
+    </div>
+  </div>
+</section>
 
-  <a href="donate.html" class="btn red">
-    Donate
-  </a>
+<section id="nominate">
+  <h2>Nominate an Alumni</h2>
+  <p>Need support or know someone who does? Submit a nomination.</p>
+  <a class="btn" href="https://forms.gle/6e1N8sohu8yFcCss7" target="_blank">Submit Nomination</a>
+</section>
+
+<div class="board-cta">
+  <h2>Meet the Board</h2>
+  <p>Pack Forever Foundation is led by former CSU Pueblo student-athletes who are committed to giving back to the community that shaped them.</p>
+  <a class="btn" href="board.html">View Board Members</a>
 </div>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Connect with us or reach out directly.</p>
+  <a class="btn" href="https://www.facebook.com/share/g/1KjDQHaBdT/" target="_blank">Join Facebook Community</a>
+  <a class="btn" href="mailto:packforeverfoundation@gmail.com">Email Us</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Pack Forever Foundation</p>
+</footer>
 
 </body>
 </html>
